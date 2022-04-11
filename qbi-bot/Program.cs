@@ -2,6 +2,7 @@ using System.Reflection;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using QbiBot.Services;
 
 class Program
 {
@@ -73,7 +74,8 @@ class Program
     // If this method is getting pretty long, you can seperate it out into another file using partials.
     private static IServiceProvider ConfigureServices()
     {
-        var map = new ServiceCollection();
+        var map = new ServiceCollection()
+            .AddSingleton<IAudioService, AudioService>();
             // Repeat this for all the service classes
             // and other dependencies that your commands might need.
             //.AddSingleton(new SomeServiceClass());
